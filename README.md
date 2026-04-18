@@ -3,7 +3,7 @@ This project is a fully responsive business website designed for a printing serv
 
 The website focuses on:
 
-Professional branding
-Smooth user experience
-Mobile responsiveness
+Professional branding,
+Smooth user experience,
+Mobile responsiveness,
 Interactive UI elements
