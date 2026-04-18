@@ -1,0 +1,1621 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Print Solution | High-Quality Prints & Custom Designs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: url('logo.png') no-repeat center center;
+            background-size: contain;
+            border-radius: 15%;
+            background-color: white;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 2rem;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+            width: 80%;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="20" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 6px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:nth-child(1) { 
+            background: url('service1.png') center/cover;
+            background-size:contain;
+            background-repeat: no-repeat;
+        }
+        .service-card:nth-child(2) { 
+            background: url('service2.png') center/cover;
+            background-size:contain;
+            background-repeat: no-repeat;
+        }
+        .service-card:nth-child(3) { 
+            background: url('service3.png') center/cover;
+            background-size: 35cqb;
+            background-repeat: no-repeat;
+        }
+        .service-card:nth-child(4) { 
+            background: url('service4.png') center/cover;
+            background-size:contain;
+            background-repeat: no-repeat;
+            
+        }
+        .service-card:nth-child(5) { 
+            background: url('service5.png') center/cover;
+            background-size:contain;
+            background-repeat: no-repeat;
+        }
+        .service-card:nth-child(6) { 
+            background: url('service6.png') center/cover;
+            background-size:contain;
+            background-repeat: no-repeat;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover .service-icon {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: white;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:nth-child(1) { 
+            background: url('portfolio1.jpeg') center/cover;
+        }
+        .portfolio-item:nth-child(2) { 
+            background: url('portfolio2.jpg') center/cover;
+        }
+        .portfolio-item:nth-child(3) { 
+            background: url('portfolio3.jpeg') center/cover;
+        }
+        .portfolio-item:nth-child(4) { 
+            background: url('portfolio4.jpeg.png') center/cover;
+        }
+        .portfolio-item:nth-child(5) { 
+            background: url('portfolio5.jpeg.png') center/cover;
+        }
+        .portfolio-item:nth-child(6) { 
+            background: url('portfolio6.jpeg.png') center/cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .portfolio-item:nth-child(7) { 
+            background: url('portfolio7.jpeg.png') center/cover;
+        }
+        .portfolio-item:nth-child(8) { 
+            background: url('portfolio8.jpeg.png') center/cover;
+        }
+        .portfolio-item:nth-child(9) { 
+            background: url('portfolio9.jpeg') center/cover;
+        }
+        .portfolio-item:nth-child(10) { 
+            background: url('portfolio10.jpeg') center/cover;
+        }
+        .portfolio-item:nth-child(11) { 
+            background: url('portfolio11.jpeg') center/cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .portfolio-item:nth-child(12) { 
+            background: url('portfolio12.jpeg') center/cover;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .slider-container {
+            position:relative;
+            max-width: 1500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slide-track {
+            display: flex;
+            width: 1000%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide {
+            width: 10%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+        }
+
+        .slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 40px 30px 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .slide:hover .slide-content {
+            transform: translateY(0);
+        }
+
+        .slide h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .slide p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button.prev {
+            left: 20px;
+        }
+
+        .nav-button.next {
+            right: 20px;
+        }
+
+        .indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .auto-play-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .auto-play-toggle:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: width 0.1s linear;
+            z-index: 10;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide.active .slide-content h3,
+        .slide.active .slide-content p {
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .slide.active .slide-content p {
+            animation-delay: 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            .slider {
+                height: 300px;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .slide h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide p {
+                font-size: 0.8rem;
+            }
+
+            /* Show fewer slides on mobile */
+            .slide-track {
+                width: 1000%;
+            }
+            
+            .slide {
+                width: 10%;
+            }
+        }
+        .testimonial-slider {
+            display:flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-card .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item span {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+                min-height: 90vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .services {
+                padding: 60px 0;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                min-height: 250px;
+                padding: 1.5rem;
+            }
+
+            .features {
+                padding: 60px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .feature-number {
+                font-size: 2.5rem;
+            }
+
+            .portfolio {
+                padding: 60px 0;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .portfolio-item {
+                height: 200px;
+            }
+
+            .testimonials {
+                padding: 60px 0;
+            }
+
+            .testimonial-card {
+                min-width: 280px;
+                padding: 1.5rem;
+            }
+
+            .contact {
+                padding: 60px 0;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .map-container {
+                order: -1;
+            }
+
+            .map-container iframe {
+                height: 250px;
+            }
+
+            .contact-item {
+                margin-bottom: 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            footer {
+                padding: 1.5rem 0;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                min-width: 250px;
+                padding: 1rem;
+            }
+
+            .service-card {
+                padding: 1rem;
+                min-height: 200px;
+            }
+
+            .portfolio-item {
+                height: 180px;
+            }
+        }
+    
+          
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                AS Print Solution
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Printing Services</h1>
+                <p>Transform your ideas into stunning prints with our high-quality printing solutions and custom designs</p>
+                <h2>Best Quality in Delhi NCR</h2>
+                <a href="#contact" class="cta-button">Get Your Quote Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>FLEX PRINTING</h3>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>HP LATEX PRINTING</h3>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>CANOPY PRINTING</h3>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>UV PRINTING</h3>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>VINYL PRINTING</h3>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div></div>
+                        <h3>UMBRELLA PRINTING</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">24</div>
+                    <h4>Hour Turnaround</h4>
+                    <p>Fast printing services available</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">100%</div>
+                    <h4>Quality Guarantee</h4>
+                    <p>Premium materials and finishes</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">15+</div>
+                    <h4>Years Experience</h4>
+                    <p>Trusted printing expertise</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">5000+</div>
+                    <h4>Happy Customers</h4>
+                    <p>Satisfied clients nationwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Standees</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Canopy Printing</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Printed Tents</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Clipon Board</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Store Branding</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Sunboard and MDF Cutout Standee</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>LED Lollipop Board</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Banner Hording</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Brochures</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Books</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Magazines</h4>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Menu</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Our Clients</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide-track" id="slideTrack">
+                    <div class="slide">
+                        <img src="client1.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client2.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client3.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client4.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client5.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client6.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <!-- Duplicate slides for seamless infinite loop -->
+                    <div class="slide">
+                        <img src="client1.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client2.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client3.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client4.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client5.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="client6.webp">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <button class="nav-button prev" onclick="changeSlide(-1)">❮</button>
+            <button class="nav-button next" onclick="changeSlide(1)">❯</button>
+    
+            <div class="indicators">
+                <span class="indicator active" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+                <span class="indicator" onclick="currentSlide(4)"></span>
+                <span class="indicator" onclick="currentSlide(5)"></span>
+                <span class="indicator" onclick="currentSlide(6)"></span>
+            </div>
+    
+            <button class="auto-play-toggle" onclick="toggleAutoPlay()">⏸️ PAUSE</button>
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Exceptional quality and service! They delivered our marketing materials ahead of schedule and the print quality was outstanding."</p>
+                    <div class="author">- Rahul, Marketing Team Head</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professional team with great attention to detail. Our business cards look amazing and really represent our brand perfectly."</p>
+                    <div class="author">- Amit Kumar, Retail Shop Owner</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Fast turnaround and competitive prices. I've been using their services for years and they never disappoint!"</p>
+                    <div class="author">- Rohit Gupta, Customer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            37, DSIDC Sheds, Pocket C, Okhla Phase I<br>
+                            Okhla Industrial Estate, New Delhi, Delhi, 110020
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.8956445834766!2d77.24066297549622!3d28.544909975693707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e564c2b0c5%3A0x5b8d36c5b8e3c9f2!2sOkhla%20Industrial%20Estate%2C%20Phase%20I%2C%20Okhla%2C%20New%20Delhi%2C%20Delhi%20110020!5e0!3m2!1sen!2sin!4v1697123456789!5m2!1sen!2sin" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <div>
+                            <br><strong>Phone:</strong><br>
+                            +91 9625445588<br>
+                            +91 9625430098
+
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            asprintsolution01@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span>🕒</span>
+                        <div>
+                            <strong>Hours:</strong><br>
+                            Mon-Fri: 8AM-6PM<br>
+                            Sat: 9AM-4PM
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Request a Quote</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Service Needed">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Project Details"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AS Print Solution. All rights reserved. | Professional Printing Services</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .feature-item, .portfolio-item, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        let currentSlideIndex = 0;
+        const totalSlides = 6; // Number of unique slides
+        const slideTrack = document.getElementById('slideTrack');
+        const progressBar = document.getElementById('progressBar');
+        const autoPlayToggle = document.querySelector('.auto-play-toggle');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        let isAutoPlay = true;
+        let autoPlayInterval;
+        let progressInterval;
+        const autoPlayDelay = 3000; // 3 seconds
+        
+        // Start at position showing 3 images (centered view)
+        let currentPosition = -30; // Shows slides 1, 2, 3 initially
+        slideTrack.style.transform = `translateX(${currentPosition}%)`;
+
+        function updateSlider(animate = true) {
+            if (!animate) {
+                slideTrack.style.transition = 'none';
+            } else {
+                slideTrack.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            }
+            
+            slideTrack.style.transform = `translateX(${currentPosition}%)`;
+
+            // Update indicators based on the center slide
+            const centerSlideIndex = Math.abs(Math.round(currentPosition / 10)) % totalSlides;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === centerSlideIndex);
+            });
+            
+            // Handle infinite loop reset
+            setTimeout(() => {
+                if (currentPosition <= -50) { // When we've moved too far right
+                    slideTrack.style.transition = 'none';
+                    currentPosition = -30; // Reset to show first set
+                    slideTrack.style.transform = `translateX(${currentPosition}%)`;
+                } else if (currentPosition >= -20) { // When we've moved too far left
+                    slideTrack.style.transition = 'none';
+                    currentPosition = -40; // Reset to show last set
+                    slideTrack.style.transform = `translateX(${currentPosition}%)`;
+                }
+            }, animate ? 800 : 0);
+        }
+
+        function nextSlide() {
+            currentPosition -= 10; // Move one slide width to the left
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentPosition += 10; // Move one slide width to the right
+            updateSlider();
+        }
+
+        function changeSlide(direction) {
+            if (direction > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            resetAutoPlay();
+        }
+
+        function currentSlide(n) {
+            // Calculate position to center the selected slide
+            currentPosition = -30 - ((n - 2) * 10);
+            updateSlider();
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            if (isAutoPlay) {
+                autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+                startProgressBar();
+            }
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+            stopProgressBar();
+        }
+
+        function resetAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+
+        function toggleAutoPlay() {
+            isAutoPlay = !isAutoPlay;
+            autoPlayToggle.textContent = isAutoPlay ? '⏸️ PAUSE' : '▶️ PLAY';
+            
+            if (isAutoPlay) {
+                startAutoPlay();
+            } else {
+                stopAutoPlay();
+            }
+        }
+
+        function startProgressBar() {
+            let progress = 0;
+            progressInterval = setInterval(() => {
+                progress += 100 / (autoPlayDelay / 100);
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    progress = 0;
+                }
+            }, 100);
+        }
+
+        function stopProgressBar() {
+            clearInterval(progressInterval);
+            progressBar.style.width = '0%';
+        }
+
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+
+        slideTrack.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        slideTrack.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changeSlide(1); // Swipe left - next slide
+                } else {
+                    changeSlide(-1); // Swipe right - previous slide
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoPlay();
+            }
+        });
+
+        // Pause on hover
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+        sliderContainer.addEventListener('mouseleave', () => {
+            if (isAutoPlay) startAutoPlay();
+        });
+
+        // Initialize
+        updateSlider(false);
+        startAutoPlay();
+
+    </script>
+</body>
+</html>
